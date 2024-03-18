@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::API
     before_action :set_locale
 
+    #:nodoc:
     def encode_token(payload)
         JWT.encode(payload, "secret")
     end
 
+    #:nodoc:
     def decode_token
         auth_header = request.headers["Authorization"]
         if auth_header
@@ -17,6 +19,7 @@ class ApplicationController < ActionController::API
         end
     end
 
+    #:nodoc:
     def authorized_user
         if decode_token
             user_id = decode_token[0]["user_id"]
@@ -29,16 +32,19 @@ class ApplicationController < ActionController::API
         end
     end
 
+    #:nodoc:
     def authorize
         not_logged_in unless authorized_user
     end
 
+    #:nodoc:
     def not_logged_in
         render json: {message: "Você precisa estar logado"}, status: :unauthorized
     end
 
     private
 
+    #:nodoc:
     def set_locale
         I18n.locale = :pt_BR
     end

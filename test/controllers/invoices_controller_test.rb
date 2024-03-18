@@ -12,7 +12,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create invoice" do
     assert_difference("Invoice.count") do
-      post invoices_url, params: { invoice: { card_number: @invoice.card_number, cvv: @invoice.cvv, due_date: @invoice.due_date, name: @invoice.name, value: @invoice.value } }, as: :json
+      post invoices_url, params: { invoice: {  } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update invoice" do
-    patch invoice_url(@invoice), params: { invoice: { card_number: @invoice.card_number, cvv: @invoice.cvv, due_date: @invoice.due_date, name: @invoice.name, value: @invoice.value } }, as: :json
+    patch invoice_url(@invoice), params: { invoice: {  } }, as: :json
     assert_response :success
   end
 
