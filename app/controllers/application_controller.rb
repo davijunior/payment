@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+    before_action :set_locale
+
     def encode_token(payload)
         JWT.encode(payload, "secret")
     end
@@ -33,5 +35,11 @@ class ApplicationController < ActionController::API
 
     def not_logged_in
         render json: {message: "Você precisa estar logado"}, status: :unauthorized
+    end
+
+    private
+
+    def set_locale
+        I18n.locale = :pt_BR
     end
 end

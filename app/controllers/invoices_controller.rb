@@ -1,10 +1,10 @@
 class InvoicesController < ApplicationController
-  before_action :authorize
+  #before_action :authorize
   before_action :set_invoice, only: %i[ show update destroy ]
 
   # GET /invoices
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.all.order(created_at: :desc)
 
     render json: @invoices
   end
@@ -19,9 +19,9 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(invoice_params)
 
     if @invoice.save
-      render json: @invoice, status: :created, location: @invoice
+      render json: {success: true, data: @invoice}, status: :created, location: @invoice
     else
-      render json: @invoice.errors, status: :unprocessable_entity
+      render json: {errors: @invoice.errors, success: false}, status: :unprocessable_entity
     end
   end
 

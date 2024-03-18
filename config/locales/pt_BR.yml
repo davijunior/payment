@@ -1,0 +1,14 @@
+pt_BR:
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "%{attribute} não pode ficar em branco \n"
+  activerecord:
+    attributes:
+      invoice:
+        due_date: "Data de Vencimento"
+        value: "Valor"
+        name: "Nome"
+        card_number: "Número do cartão"
+        cvv: "cvv"
+            

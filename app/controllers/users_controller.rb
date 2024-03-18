@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       token = encode_token({user_id: @user.id})
       render json: {user: @user, token: token}, status: :created, location: @user
     else
-      render json: {errors: "Usuario ou senha inválida"}, status: :unprocessable_entity
+      render json: {errors: "Usuario ou senha inválidos"}, status: :unprocessable_entity
     end
   end
 
